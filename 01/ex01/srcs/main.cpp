@@ -12,4 +12,5 @@ int	main(int ac, char **av) {
 	Zombie*	zombies = zombieHorde(size, av[2]);
 	for (int i = 0; i < size; i++)
 		zombies->announce();
+	delete [] zombies;
 }
