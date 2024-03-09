@@ -19,7 +19,7 @@ objs/%.o: srcs/%.cpp
 clean:
 	rm -f $(OBJS)
 	rm -f $(DEPS)
-	rmdir objs/
+	rm -rf objs/
 
 fclean: clean
 	rm -f $(NAME)
