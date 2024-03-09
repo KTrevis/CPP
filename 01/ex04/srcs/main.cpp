@@ -10,6 +10,10 @@ int	main(int ac, char **av) {
 	// goal: copy fileInput in fileOutput while replacing every occurence of s1 by s2
 	std::string		str = av[1];
 	std::ifstream	fileInput(str.c_str());
+	if (!fileInput) {
+		std::cerr << str << " does not exist." << std::endl;
+		return (1);
+	}
 	std::ofstream	fileOutput((str + ".replace").c_str());
 	std::string		s1 = av[2];
 	std::string		s2 = av[3];
@@ -20,6 +24,6 @@ int	main(int ac, char **av) {
 			str.erase(index, s1.length());
 			str.insert(index, s2);
 		}
-		fileOutput << str + '\n';
+		fileOutput << str << std::endl;
 	}
 }
