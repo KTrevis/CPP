@@ -1,0 +1,5 @@
+*/objs/*.o
+*/objs/*.d
+*/phonebook
+*/megaphone
+*/compile_flags.txt
