@@ -59,7 +59,8 @@ void	searchContact(PhoneBook &book) {
 		std::cout << "|    " << i << "     |";
 		for (int j = FIRSTNAME; j <= PHONENUMBER; j++)
 			formattedDisplay(curr, (e_ContactFields)j);
-		std::cout << RESET << std::endl;
+		std::cout << std::endl;
 	}
+	std::cout << RESET;
 	findContactWithId(book);
 }
