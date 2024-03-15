@@ -2,7 +2,9 @@
 
 Weapon::Weapon(std::string type): _type(type) {}
 
-Weapon::Weapon() {}
+Weapon::Weapon() {
+	this->setType("");
+}
 
 Weapon::~Weapon() {}
 
