@@ -8,15 +8,15 @@ int	main() {
 	a.setRawBits(123);
 	std::cout << "a value: " << a << std::endl;
 
-	Fixed b = a;
+	Fixed b;
 	std::cout << "b value: " << b << std::endl;
 
-	Fixed c;
-	std::cout << "c value: " << c << std::endl;
+	b = a;
+	std::cout << "a value: " << a << std::endl;
 
-	c = Fixed(a);
-	std::cout << "c value: " << c << std::endl;
+	b = Fixed(a);
+	std::cout << "a value: " << a << std::endl;
 
-	c.setRawBits(809);
-	std::cout << "c value: " << c << std::endl;
+	b.setRawBits(89);
+	std::cout << "a value: " << a << std::endl;
 }
