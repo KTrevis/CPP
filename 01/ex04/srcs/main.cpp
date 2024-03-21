@@ -1,6 +1,14 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <sys/stat.h>
+
+bool	isFolder(const char *path) {
+	struct stat s;
+
+	stat(path, &s);
+	return (s.st_mode & S_IFDIR);
+}
 
 int	main(int ac, char **av) {
 	if (ac != 4) {
@@ -12,9 +20,13 @@ int	main(int ac, char **av) {
 	}
 	// goal: copy fileInput in fileOutput while replacing every occurence of s1 by s2
 	std::string		str = av[1];
+	if (isFolder(str.c_str())) {
+		std::cerr << str << " is a folder." << std::endl;
+		return (1);
+	}
 	std::ifstream	fileInput(str.c_str());
 	if (!fileInput) {
-		std::cerr << str << " does not exist." << std::endl;
+		std::cerr << str << " couldn't be opened." << std::endl;
 		return (1);
 	}
 	std::ofstream	fileOutput((str + ".replace").c_str());
