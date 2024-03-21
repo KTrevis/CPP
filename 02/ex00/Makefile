@@ -1,7 +1,7 @@
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
-NAME = zombie
+NAME = fixed
 
 SRCS = main.cpp Fixed.cpp
 OBJS = $(addprefix objs/,$(SRCS:.cpp=.o))
