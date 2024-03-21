@@ -12,11 +12,11 @@ int	main() {
 	std::cout << "b value: " << b << std::endl;
 
 	b = a;
-	std::cout << "a value: " << a << std::endl;
+	std::cout << "b value: " << a << std::endl;
 
 	b = Fixed(a);
-	std::cout << "a value: " << a << std::endl;
+	std::cout << "b value: " << a << std::endl;
 
-	b.setRawBits(89);
-	std::cout << "a value: " << a << std::endl;
+	b.setRawBits(83);
+	std::cout << "b value: " << a << std::endl;
 }
