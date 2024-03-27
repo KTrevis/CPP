@@ -23,7 +23,7 @@ Fixed &Fixed::operator=(Fixed const &ref) {
 	return *this;
 }
 
-std::ostream	&operator<<(std::ostream &os, Fixed const &ref) {
+std::ostream &operator<<(std::ostream &os, Fixed const &ref) {
 	os << ref.getRawBits();
 	return os;
 }

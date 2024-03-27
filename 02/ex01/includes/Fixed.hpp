@@ -19,6 +19,8 @@ class Fixed {
 		Fixed			&operator=(Fixed const &ref);
 
 	private:
+		int					_getDecimalPart() const;
+		int					_getFractionalPart() const;
 		int					_value;
 		static const int	_bits = 8;
 };
