@@ -1,4 +1,5 @@
 #include "Fixed.hpp"
+#include <cmath>
 
 Fixed::Fixed() {
 	std::cout << "Default constructor called" << std::endl;
@@ -12,12 +13,13 @@ Fixed::Fixed(Fixed const &ref) {
 
 Fixed::Fixed(int const n) {
 	std::cout << "Int constructor called" << std::endl;
-	this->setRawBits(n);
+	this->_value = n;
+	this->_value <<= this->_bits;
 }
 
 Fixed::Fixed(float const n) {
 	std::cout << "Float constructor called" << std::endl;
-	this->_value = n * (1 << this->_bits);
+	this->_value = roundf(n * (1 << this->_bits));
 }
 
 Fixed::~Fixed() {
