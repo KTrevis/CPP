@@ -11,18 +11,33 @@ class Fixed {
 		Fixed(float const n);
 		~Fixed();
 
+		/* FUNCTIONS */
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 		float	toFloat() const;
 		int		toInt() const;
+		Fixed	&min(Fixed const &a, Fixed const &b);
+		Fixed	&max(Fixed const &a, Fixed const &b);
 
-		// comparison operators
-		bool	operator<(Fixed const &ref);
-		bool	operator>(Fixed const &ref);
-		bool	operator<=(Fixed const &ref);
-		bool	operator>=(Fixed const &ref);
-		bool	operator==(Fixed const &ref);
-		bool	operator!=(Fixed const &ref);
+		/* COMPARISON OPERATORS */
+		bool	operator<(Fixed const &ref) const;
+		bool	operator>(Fixed const &ref) const;
+		bool	operator<=(Fixed const &ref) const;
+		bool	operator>=(Fixed const &ref) const;
+		bool	operator==(Fixed const &ref) const;
+		bool	operator!=(Fixed const &ref) const;
+
+		/* ARITHMETIC OPERATORS */
+		Fixed	operator+(Fixed const &ref);
+		Fixed	operator-(Fixed const &ref);
+		Fixed	operator*(Fixed const &ref);
+		Fixed	operator/(Fixed const &ref);
+
+		/* INCREMENT OPERATORS */
+		Fixed	&operator++();
+		Fixed	operator++(int);
+		Fixed	&operator--();
+		Fixed	operator--(int);
 
 		Fixed	&operator=(Fixed const &ref);
 
