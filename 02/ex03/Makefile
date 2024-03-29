@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 NAME = fixed
 
-SRCS = main.cpp Fixed.cpp Point.cpp
+SRCS = main.cpp Fixed.cpp Point.cpp bsp.cpp
 OBJS = $(addprefix objs/,$(SRCS:.cpp=.o))
 DEPS = $(OBJS:.o=.d)
 
