@@ -14,7 +14,7 @@ $(NAME): $(OBJS)
 
 objs/%.o: srcs/%.cpp
 	@mkdir -p objs/
-	$(CPP) $(FLAGS) -MMD -c $< -o $@ -I includes/
+	$(CPP) $(FLAGS) -MMD -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

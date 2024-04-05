@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 NAME = claptrap
 
-SRCS = main.cpp ClapTrap.cpp
+SRCS = ClapTrap.cpp main.cpp
 OBJS = $(addprefix objs/,$(SRCS:.cpp=.o))
 DEPS = $(OBJS:.o=.d)
 
@@ -14,7 +14,7 @@ $(NAME): $(OBJS)
 
 objs/%.o: srcs/%.cpp
 	@mkdir -p objs/
-	$(CPP) $(FLAGS) -MMD -c $< -o $@ -I includes/
+	$(CPP) $(FLAGS) -MMD -c $< -o $@
 
 clean:
 	rm -f $(OBJS)

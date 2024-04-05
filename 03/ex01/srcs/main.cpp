@@ -7,8 +7,9 @@ void	displayHP(ClapTrap &ref) {
 int	main() {
 	ClapTrap bob("bob");
 
+	bob.attack("michel");
 	displayHP(bob);
-	bob.takeDamage(8);
+	bob.takeDamage(11);
 	displayHP(bob);
 	bob.beRepaired(2);
 	displayHP(bob);

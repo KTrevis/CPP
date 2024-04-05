@@ -18,7 +18,6 @@ class ClapTrap {
 		unsigned int	getHP();
 		unsigned int	getEnergy();
 		std::string		getName();
-		void			setName(std::string name);
 
 	private:
 		std::string		_name;
