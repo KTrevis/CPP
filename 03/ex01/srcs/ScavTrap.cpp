@@ -1,15 +1,24 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name) {
-	this->setName(name);
+ScavTrap::ScavTrap() {
+	std::cout << "ScavTrap : Default Constructor Called" << std::endl;
 }
 
-ScavTrap::ScavTrap() {}
-
-ScavTrap::ScavTrap(ScavTrap const &ref) {
-	*this = ref;
+ScavTrap::~ScavTrap() {
+	std::cout << "ScavTrap : Destructor Called" << std::endl;
 }
 
-ScavTrap::~ScavTrap() {}
+ScavTrap::ScavTrap(ScavTrap const &obj) {
+	std::cout << "Copy Constructor Called" << std::endl;
+	if (this != &obj)
+		*this = obj;
+}
 
-void	guardGate() {}
+ScavTrap	&ScavTrap::operator= (const ScavTrap &obj) {
+	std::cout << "Copy Assignment Operator Called" << std::endl;
+	if (this != &obj) {
+		//	this->attributes = obj.attributes;
+		//	...
+	}
+	return (*this);
+}
