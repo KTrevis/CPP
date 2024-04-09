@@ -1,9 +1,9 @@
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
-NAME = claptrap
+NAME = fragtrap
 
-SRCS = main.cpp ClapTrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJS = $(addprefix objs/,$(SRCS:.cpp=.o))
 DEPS = $(OBJS:.o=.d)
 
