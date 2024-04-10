@@ -1,4 +1,4 @@
-#include "ScavTrap.hpp"
+#include "FlagTrap.hpp"
 
 void	displayData(ClapTrap &ref) {
 	std::cout << ref.getName() << " data:" << std::endl;
@@ -8,7 +8,7 @@ void	displayData(ClapTrap &ref) {
 }
 
 int	main() {
-	ScavTrap bob("bob");
+	FlagTrap bob("bob");
 
 	bob.attack("michel");
 	displayData(bob);
@@ -17,5 +17,5 @@ int	main() {
 	bob.beRepaired(2);
 	displayData(bob);
 	bob.attack("michel");
-	bob.guardGate();
+	bob.highFivesGuys();
 }

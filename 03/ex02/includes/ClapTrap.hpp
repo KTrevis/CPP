@@ -21,7 +21,7 @@ class ClapTrap {
 		uint		getHP()		const;
 		uint		getEnergy()	const;
 		uint		getDamage()	const;
-	
+
 	protected:
 		/* SETTERS */
 		void	setName(std::string name);
