@@ -9,7 +9,7 @@ DEPS = $(OBJS:.o=.d)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS)	
 	$(CPP) $(FLAGS) $(OBJS) -o $(NAME)
 
 objs/%.o: srcs/%.cpp

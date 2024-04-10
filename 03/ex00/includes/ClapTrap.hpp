@@ -3,6 +3,8 @@
 
 #include <iostream>
 
+#define uint unsigned int
+
 class ClapTrap {
 	public:
 		ClapTrap(std::string name);
@@ -15,15 +17,16 @@ class ClapTrap {
 		void			beRepaired(unsigned int amount);
 
 		/* GETTERS */
-		unsigned int	getHP();
-		unsigned int	getEnergy();
-		std::string		getName();
+		std::string	getName()	const;
+		uint		getHP()		const;
+		uint		getEnergy()	const;
+		uint		getDamage()	const;
 
 	private:
-		std::string		_name;
-		unsigned int	_hp;
-		unsigned int	_energy;
-		unsigned int	_damage;
+		std::string	_name;
+		uint		_hp;
+		uint		_energy;
+		uint		_damage;
 };
 
 #endif

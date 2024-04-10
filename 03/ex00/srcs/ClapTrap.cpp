@@ -5,19 +5,19 @@ ClapTrap::ClapTrap(std::string name) {
 	this->_hp = 10;
 	this->_energy = 10;
 	this->_damage = 0;
-	std::cout << "ClapTrap string constructor called" << std::endl;
+	std::cout << "ClapTrap : String constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap() {
-	this->_name = "default";
+	this->_name = "ClapTrap";
 	this->_hp = 10;
 	this->_energy = 10;
 	this->_damage = 0;
-	std::cout << "ClapTrap default constructor called" << std::endl;
+	std::cout << "ClapTrap : Default constructor called" << std::endl;
 }
 
 ClapTrap::~ClapTrap() {
-	std::cout << "ClapTrap destructor called" << std::endl;
+	std::cout << "ClapTrap : Destructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(ClapTrap const &ref) {
@@ -25,6 +25,8 @@ ClapTrap::ClapTrap(ClapTrap const &ref) {
 }
 
 ClapTrap &ClapTrap::operator=(ClapTrap const &ref) {
+	if (this == &ref)
+		return *this;
 	this->_name = ref._name;
 	this->_damage = ref._damage;
 	this->_energy = ref._energy;
@@ -62,14 +64,18 @@ void	ClapTrap::beRepaired(unsigned int amount) {
 	std::cout << "ClapTrap " << this->_name << " repairs for " << amount << " hp." << std::endl;
 }
 
-unsigned int	ClapTrap::getHP() {
+std::string		ClapTrap::getName() const {
+	return this->_name;
+}
+
+uint	ClapTrap::getHP() const {
 	return this->_hp;
 }
 
-unsigned int	ClapTrap::getEnergy() {
+uint	ClapTrap::getEnergy() const {
 	return this->_energy;
 }
 
-std::string		ClapTrap::getName() {
-	return this->_name;
+uint	ClapTrap::getDamage() const {
+	return this->_damage;
 }

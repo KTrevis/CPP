@@ -1,18 +1,21 @@
 #include "ScavTrap.hpp"
 
-void	displayHP(ClapTrap &ref) {
-	std::cout << ref.getName() << " HP: " << ref.getHP() << std::endl;
+void	displayData(ClapTrap &ref) {
+	std::cout << ref.getName() << " data :" << std::endl;
+	std::cout << "HP: " << ref.getHP() << std::endl;
+	std::cout << "Energy: " << ref.getEnergy() << std::endl;
+	std::cout << "Damage: " << ref.getDamage() << std::endl;
 }
 
 int	main() {
 	ScavTrap bob("bob");
 
 	bob.attack("michel");
-	displayHP(bob);
+	displayData(bob);
 	bob.takeDamage(11);
-	displayHP(bob);
+	displayData(bob);
 	bob.beRepaired(2);
-	displayHP(bob);
+	displayData(bob);
 	bob.attack("michel");
 	bob.guardGate();
 }

@@ -2,29 +2,36 @@
 # define CLAPTRAP_HPP
 
 #include <iostream>
+
 #define uint unsigned int
 
 class ClapTrap {
 	public:
 		ClapTrap(std::string name);
-		ClapTrap(std::string name, uint hp, uint energy, uint damage);
+		ClapTrap();
 		ClapTrap(ClapTrap const &ref);
+		ClapTrap(std::string name, uint hp, uint energy, uint damage);
 		~ClapTrap();
 		ClapTrap &operator=(ClapTrap const &ref);
-		void			attack(std::string const &target);
-		void			takeDamage(unsigned int amount);
-		void			beRepaired(unsigned int amount);
-
+		void	attack(std::string const &target);
+		void	takeDamage(unsigned int amount);
+		void	beRepaired(unsigned int amount);
 		/* GETTERS */
-		unsigned int	getHP() const;
-		unsigned int	getEnergy() const;
-		std::string		getName() const;
+		std::string	getName()	const;
+		uint		getHP()		const;
+		uint		getEnergy()	const;
+		uint		getDamage()	const;
+		/* SETTERS */
+		void	setName(std::string name);
+		void	setHP(uint hp);
+		void	setEnergy(uint energy);
+		void	setDamage(uint damage);
 
 	private:
-		std::string		_name;
-		unsigned int	_hp;
-		unsigned int	_energy;
-		unsigned int	_damage;
+		std::string	_name;
+		uint		_hp;
+		uint		_energy;
+		uint		_damage;
 };
 
 #endif
