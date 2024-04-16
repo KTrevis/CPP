@@ -36,30 +36,25 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &ref) {
 }
 
 void	ClapTrap::attack(std::string const &target) {
-	if (this->_energy == 0) {
-		std::cout << "ClapTrap " << this->_name << " out of energy." << std::endl; 
+	if (!this->canAct())
 		return ;
-	}
 	this->_energy -= 1;
 	std::cout << "ClapTrap " << this->_name << " attacks " << target
 	<< ", causing " << this->_damage << " points of damage!" << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount) {
+	std::cout << "ClapTrap " << this->_name << " takes " << amount << " of damage." << std::endl;
 	if (this->_hp == 0 || this->_hp < amount) {
-		std::cout << "ClapTrap " << this->_name << " died." << std::endl;
 		this->_hp = 0;
 		return ;
 	}
 	this->_hp -= amount;
-	std::cout << "ClapTrap " << this->_damage << " takes " << amount << " of damage." << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount) {
-	if (this->_energy == 0) {
-		std::cout << "ClapTrap " << this->_name << " out of energy." << std::endl; 
+	if (!this->canAct())
 		return ;
-	}
 	this->_energy -= 1;
 	this->_hp += amount;
 	std::cout << "ClapTrap " << this->_name << " repairs for " << amount << " hp." << std::endl;
@@ -69,6 +64,19 @@ std::string		ClapTrap::getName() const {
 	return this->_name;
 }
 
+bool	ClapTrap::canAct() {
+	if (this->_hp == 0) {
+		std::cout << this->_name << " cannot act, it is out of hit points." << std::endl;
+		return false;
+	}
+	if (this->_energy == 0) {
+		std::cout << this->_name << " cannot act, it is out of energy." << std::endl;
+		return false;
+	}
+	return true;
+}
+
+/* GETTERS */
 uint	ClapTrap::getHP() const {
 	return this->_hp;
 }
@@ -79,4 +87,21 @@ uint	ClapTrap::getEnergy() const {
 
 uint	ClapTrap::getDamage() const {
 	return this->_damage;
+}
+
+/* SETTERS */
+void	ClapTrap::setName(std::string name) {
+	this->_name = name;
+}
+
+void	ClapTrap::setHP(uint HP) {
+	this->_hp = HP;
+}
+
+void	ClapTrap::setEnergy(uint energy) {
+	this->_energy = energy;
+}
+
+void	ClapTrap::setDamage(uint damage) {
+	this->_damage = damage;
 }

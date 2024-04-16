@@ -8,9 +8,9 @@ class	FlagTrap: public ClapTrap {
 	public:
 		FlagTrap();
 		FlagTrap(std::string name);
-		FlagTrap(FlagTrap const &obj);
+		FlagTrap(ClapTrap const &obj);
 		~FlagTrap();
-		FlagTrap &operator=(const FlagTrap &obj);
+		FlagTrap &operator=(const ClapTrap &obj);
 		void	highFivesGuys();
 
 	private:

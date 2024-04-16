@@ -1,11 +1,17 @@
 #include "ScavTrap.hpp"
 
-ScavTrap::ScavTrap(std::string name): ClapTrap(name, 100, 50, 20) {
+ScavTrap::ScavTrap(std::string name): ClapTrap(name) {
 	std::cout << "ScavTrap : Default Constructor Called" << std::endl;
+	this->setHP(100);
+	this->setEnergy(50);
+	this->setDamage(20);
 }
 
-ScavTrap::ScavTrap(): ClapTrap("ScavTrap", 100, 50, 20) {
+ScavTrap::ScavTrap(): ClapTrap("ScavTrap") {
 	std::cout << "ScavTrap : Default Constructor Called" << std::endl;
+	this->setHP(100);
+	this->setEnergy(50);
+	this->setDamage(20);
 }
 
 ScavTrap::~ScavTrap() {
