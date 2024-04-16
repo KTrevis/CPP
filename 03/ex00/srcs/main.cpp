@@ -9,6 +9,7 @@ void	displayData(ClapTrap &ref) {
 
 int	main() {
 	ClapTrap bob("bob");
+	ClapTrap michel("michel");
 
 	bob.attack("michel");
 	displayData(bob);
@@ -17,4 +18,6 @@ int	main() {
 	bob.beRepaired(2);
 	displayData(bob);
 	bob.attack("michel");
+	michel = bob;
+	displayData(michel);
 }
