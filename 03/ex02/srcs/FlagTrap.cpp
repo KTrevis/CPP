@@ -22,7 +22,6 @@ FlagTrap	&FlagTrap::operator= (const FlagTrap &obj) {
 	std::cout << "FlagTrap : Copy Assignment Operator Called" << std::endl;
 	if (this == &obj)
 		return *this;
-	this->setName(obj.getName());
 	this->setHP(obj.getHP());
 	this->setEnergy(obj.getEnergy());
 	this->setDamage(obj.getDamage());

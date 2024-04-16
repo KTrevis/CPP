@@ -12,17 +12,16 @@ ScavTrap::~ScavTrap() {
 	std::cout << "ScavTrap : Destructor Called" << std::endl;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &obj) {
+ScavTrap::ScavTrap(ClapTrap const &obj) {
 	std::cout << "ScavTrap : Copy Constructor Called" << std::endl;
 	if (this != &obj)
 		*this = obj;
 }
 
-ScavTrap	&ScavTrap::operator=(const ScavTrap &obj) {
+ScavTrap	&ScavTrap::operator=(const ClapTrap &obj) {
 	std::cout << "ScavTrap : Copy Assignment Operator Called" << std::endl;
 	if (this == &obj)
 		return *this;
-	this->setName(obj.getName());
 	this->setHP(obj.getHP());
 	this->setEnergy(obj.getEnergy());
 	this->setDamage(obj.getDamage());

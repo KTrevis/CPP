@@ -29,7 +29,6 @@ ClapTrap &ClapTrap::operator=(ClapTrap const &ref) {
 	std::cout << "ClapTrap : Copy operator called" << std::endl;
 	if (this == &ref)
 		return *this;
-	this->_name = ref._name;
 	this->_damage = ref._damage;
 	this->_energy = ref._energy;
 	this->_hp = ref._hp;

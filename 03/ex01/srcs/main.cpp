@@ -9,6 +9,8 @@ void	displayData(ClapTrap &ref) {
 
 int	main() {
 	ScavTrap bob("bob");
+	ClapTrap michel("michel");
+	ScavTrap lucas("lucas");
 
 	bob.attack("michel");
 	displayData(bob);
@@ -18,4 +20,8 @@ int	main() {
 	displayData(bob);
 	bob.attack("michel");
 	bob.guardGate();
+	michel = bob;
+	displayData(michel);
+	lucas = michel;
+	displayData(lucas);
 }
