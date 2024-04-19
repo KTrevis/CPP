@@ -12,9 +12,10 @@ class Cat: public Animal {
 		~Cat();
 		Cat &operator=(const Cat &obj);
 		void	makeSound();
+		void	displaySomeIdeas();
 
 	private:
 		Brain	*brain;
-	};
+};
 
 #endif

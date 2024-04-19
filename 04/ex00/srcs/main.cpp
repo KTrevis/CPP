@@ -16,8 +16,8 @@ void	wrongAnimalTest() {
 	delete wrongCat;
 }
 
-void	correctionAnimals() {
-	std::cout << std::endl << "CORRECT ANIMALS" << std::endl << std::endl;
+void	goodAnimals() {
+	std::cout << std::endl << "GOOD ANIMALS" << std::endl << std::endl;
 
 	Animal	*animal = new Animal;
 	Animal	*cat = new Cat;
@@ -37,5 +37,5 @@ void	correctionAnimals() {
 
 int	main() {
 	wrongAnimalTest();
-	correctionAnimals();
+	goodAnimals();
 }

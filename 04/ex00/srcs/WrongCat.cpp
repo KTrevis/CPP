@@ -1,4 +1,5 @@
 #include "WrongCat.hpp"
+#include "WrongAnimal.hpp"
 
 WrongCat::WrongCat() {
 	std::cout << "WrongCat : Default Constructor Called" << std::endl;
@@ -8,7 +9,7 @@ WrongCat::~WrongCat() {
 	std::cout << "WrongCat : Destructor Called" << std::endl;
 }
 
-WrongCat::WrongCat(WrongCat const &obj) {
+WrongCat::WrongCat(WrongCat const &obj): WrongAnimal(obj) {
 	std::cout << "WrongCat : Copy Constructor Called" << std::endl;
 	if (this != &obj)
 		*this = obj;

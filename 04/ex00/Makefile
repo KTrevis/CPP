@@ -17,9 +17,8 @@ objs/%.o: srcs/%.cpp
 	$(CPP) $(FLAGS) -MMD -c $< -o $@ -I includes/
 
 clean:
-	rm -f $(OBJS)
 	rm -f $(DEPS)
-	rmdir objs/
+	rm -rf objs/
 
 fclean: clean
 	rm -f $(NAME)
