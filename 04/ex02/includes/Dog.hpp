@@ -12,7 +12,7 @@ class Dog: public Animal {
 		~Dog();
 		Dog &operator=(const Dog &obj);
 		void	makeSound();
-	
+
 	private:
 		Brain	*brain;
 };

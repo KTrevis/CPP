@@ -1,9 +1,9 @@
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
-NAME = fixed
+NAME = materia
 
-SRCS = main.cpp Fixed.cpp
+SRCS = main.cpp Ice.cpp Cure.cpp Character.cpp AMateria.cpp MateriaSource.cpp
 OBJS = $(addprefix objs/,$(SRCS:.cpp=.o))
 DEPS = $(OBJS:.o=.d)
 

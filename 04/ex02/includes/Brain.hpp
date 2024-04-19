@@ -9,7 +9,9 @@ class Brain {
 		Brain(Brain const &obj);
 		~Brain();
 		Brain &operator=(const Brain &obj);
+		void	displaySomeIdeas();
 	
 	private:
+		std::string	ideas[100];
 };
 #endif
