@@ -2,8 +2,8 @@
 #include "Cat.hpp"
 
 static void	testCopy() {
-	Animal	*dog1 = new Dog;
-	Animal	*dog2 = new Dog;
+	Dog	*dog1 = new Dog;
+	Dog	*dog2 = new Dog;
 
 	std::cout << std::endl << "IDEAS BEFORE COPY" << std::endl;
 	std::cout << std::endl << "DOG 1 IDEAS" << std::endl;

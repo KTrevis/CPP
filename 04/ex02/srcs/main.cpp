@@ -4,5 +4,6 @@
 
 int	main() {
 	/* Animal	animal; */
-	Dog		dog;
+	Dog	dog;
+	Cat	cat;
 }

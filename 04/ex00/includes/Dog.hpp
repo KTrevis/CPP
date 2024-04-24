@@ -10,7 +10,7 @@ class Dog: public Animal {
 		Dog(Dog const &obj);
 		~Dog();
 		Dog &operator=(const Dog &obj);
-		void	makeSound();
+		void	makeSound() const;
 };
 
 #endif

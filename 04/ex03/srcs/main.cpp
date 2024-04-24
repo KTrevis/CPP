@@ -2,6 +2,7 @@
 #include "Character.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
+#include "MateriaSource.hpp"
 
 void	equipAndUseTest() {
 	ICharacter	*player = new Character("player");
@@ -36,32 +37,51 @@ void	equipAndUseTest() {
 	delete enemy;
 }
 
-void	copyTest() {
+void	characterCopyTest() {
 	std::cout << std::endl << "COPY TEST" << std::endl;
-	ICharacter	*player = new Character("player");
-	ICharacter	*enemy = new Character("enemy");
+	Character	player("player");
+	Character	enemy("enemy");
 
 	std::cout << "ADDING RANDOM SPELLS IN PLAYER INVENTORY" << std::endl;
 	for (int i = 0; i < CHARACTER_MAX_MATERIAS; i++) {
 		if (i % 2)
-			player->equip(new Ice);
+			player.equip(new Ice);
 		else
-			player->equip(new Cure);
-		player->use(i, *enemy);
+			player.equip(new Cure);
+		player.use(i, enemy);
 	}
 
 	std::cout << std::endl << "COPYING EVERYTHING INTO ENEMY INVENTORY" << std::endl;
-	*enemy = *player;
-	delete player;
+	enemy = player;
 	for (int i = 0; i < CHARACTER_MAX_MATERIAS; i++)
-		enemy->use(i, *player);
-	delete enemy;
+		enemy.use(i, player);
 }
 
-void	materiaSourceTest() {}
+void	 materiaSourceTest() {
+	std::cout << "CREATE MATERIA TEST" << std::endl;
+	MateriaSource	source;
+	Character	player("player");
+	AMateria	*materia;
+
+	materia = source.createMateria("ice");
+	materia->use(player);
+	source.learnMateria(materia);
+	materia = source.createMateria("cure");
+	materia->use(player);
+	source.learnMateria(materia);
+	materia = source.createMateria("UNKNOWN");
+	std::cout << materia << std::endl;
+	source.learnMateria(materia);
+
+	for (int i = 0; i < 2; i++)
+		source.learnMateria(new Ice);
+
+	std::cout << std::endl << "USING EVERY MATERIAS" << std::endl;
+	source.useEveryMaterias(player);
+}
 
 int	main() {
-	/* equipAndUseTest(); */
-	copyTest();
-	/* materiaSourceTest(); */
+	equipAndUseTest();
+	characterCopyTest();
+	materiaSourceTest();
 }

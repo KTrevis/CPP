@@ -13,8 +13,9 @@ class MateriaSource: public IMateriaSource {
 		MateriaSource(MateriaSource const &obj);
 		~MateriaSource();
 		MateriaSource &operator=(const MateriaSource &obj);
-		void	learnMateria(AMateria *materia);
+		void		learnMateria(AMateria *materia);
 		AMateria	*createMateria(std::string const &type);
+		void		useEveryMaterias(ICharacter &target);
 
 	private:
 		AMateria	*materias[4];

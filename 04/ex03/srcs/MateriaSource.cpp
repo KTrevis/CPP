@@ -1,4 +1,5 @@
 #include "MateriaSource.hpp"
+#include "ICharacter.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include "AMateria.hpp"
@@ -25,6 +26,8 @@ MateriaSource	&MateriaSource::operator=(const MateriaSource &obj) {
 }
 
 void	MateriaSource::learnMateria(AMateria *materia) {
+	if (!materia)
+		return ;
 	for (int i = 0; i < SOURCE_MAX_MATERIAS; i++) {
 		if (this->materias[i] == NULL) {
 			this->materias[i] = materia;
@@ -39,4 +42,11 @@ AMateria	*MateriaSource::createMateria(std::string const &type) {
 	if (type == "cure")
 		return new Cure;
 	return NULL;
+}
+
+void	MateriaSource::useEveryMaterias(ICharacter &target) {
+	for (int i = 0; i < SOURCE_MAX_MATERIAS; i++) {
+		if (this->materias[i])
+			this->materias[i]->use(target);
+	}
 }
