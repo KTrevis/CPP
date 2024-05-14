@@ -31,7 +31,6 @@ class AForm {
 
 	private:
 		const std::string 	_name;
-		const std::string	_target;
 		bool				_isSigned;
 		const uchar			_signGrade;
 		const uchar			_execGrade;

@@ -12,6 +12,9 @@ class PresidentialPardonForm: public AForm {
 		~PresidentialPardonForm();
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &obj);
 		void	executeBehaviour() const;
+
+	private:
+		std::string	_target;
 };
 
 #endif
