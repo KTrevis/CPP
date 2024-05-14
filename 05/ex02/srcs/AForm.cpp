@@ -32,10 +32,9 @@ void	AForm::beSigned(Bureaucrat &b) {
 		std::cerr << "Already signed" << std::endl;
 		return ;
 	}
-	if (b.getGrade() <= this->_signGrade)
-		this->_isSigned = true;
-	else
+	if (b.getGrade() > this->_signGrade)
 		throw AForm::GradeTooLowException();
+	this->_isSigned = true;
 }
 
 uchar	AForm::getExecGrade() const {
@@ -55,10 +54,9 @@ bool	AForm::isSigned() const {
 }
 
 void	AForm::execute(Bureaucrat const &executor) const {
-	if (executor.getGrade() <= this->_execGrade)
-		std::cout << executor.getName() << " executed " << this->_name << std::endl;
-	else
+	if (executor.getGrade() > this->_execGrade)
 		throw AForm::GradeTooLowException();
+	executeBehaviour();
 }
 
 const char	*AForm::GradeTooLowException::what() const throw() {

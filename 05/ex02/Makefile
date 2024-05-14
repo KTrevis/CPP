@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 NAME = bureaucrat
 
-SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
+SRCS = AForm.cpp Bureaucrat.cpp main.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp  
 OBJS = $(addprefix objs/,$(SRCS:.cpp=.o))
 DEPS = $(OBJS:.o=.d)
 

@@ -6,11 +6,15 @@
 
 class ShrubberyCreationForm: public AForm {
 	public:
-		ShrubberyCreationForm(std::string name);
+		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm();
 		ShrubberyCreationForm(ShrubberyCreationForm const &obj);
 		~ShrubberyCreationForm();
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &obj);
+		void	executeBehaviour() const;
+
+	private:
+		std::string	_target;
 };
 
 #endif

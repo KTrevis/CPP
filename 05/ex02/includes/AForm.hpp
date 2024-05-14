@@ -15,6 +15,7 @@ class AForm {
 		std::string	getName() const;
 		bool		isSigned() const;
 		void		execute(Bureaucrat const &executor) const;
+		virtual void	executeBehaviour() const = 0;
 
 		class GradeTooLowException: public std::exception {
 			virtual const char *what() const throw();
