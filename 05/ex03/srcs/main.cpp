@@ -1,60 +1,92 @@
 #include "Bureaucrat.hpp"
-#include "AForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
+#include <exception>
 #include <fstream>
 
-void	shrubberyTest() {
-	std::cout << "SHRUBERRY TEST" << std::endl;
-	ShrubberyCreationForm	form("home");
-	Bureaucrat				b("Michel", 1);
+void	presidentialTest() {
+	Intern	intern;
+	Bureaucrat	b;
+	AForm	*form;
 
-	b.executeForm(form);
-	std::cout << b << std::endl;
+	form = intern.makeForm("Robotomy Request Form", "oui");
+
 	b = Bureaucrat("Michel", 150);
-	b.executeForm(form);
 	try {
-		form.execute(b);
+		if (form)
+			form->execute(b);
 	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
+
+	b = Bureaucrat("Michel", 1);
+	try {
+		if (form)
+			form->execute(b);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	delete form;
 }
 
 void	robotomyTest() {
-	std::cout << std::endl << "ROBOTOMY TEST" << std::endl;
-	RobotomyRequestForm	form("Michel");
-	Bureaucrat				b("Michel", 1);
+	Intern	intern;
+	Bureaucrat	b;
+	AForm	*form;
 
-	b.executeForm(form);
-	b.executeForm(form);
-	b.executeForm(form);
+	form = intern.makeForm("Robotomy Request Form", "oui");
+
 	b = Bureaucrat("Michel", 150);
-	b.executeForm(form);
 	try {
-		form.execute(b);
+		if (form)
+			form->execute(b);
 	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
+
+	b = Bureaucrat("Michel", 1);
+	try {
+		if (form)
+			form->execute(b);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	delete form;
 }
 
-void	presidentialTest() {
-	std::cout << std::endl << "PRESIDENTIAL TEST" << std::endl;
-	PresidentialPardonForm	form;
-	Bureaucrat				b("Michel", 1);
+void	shruberryTest() {
+	Intern	intern;
+	Bureaucrat	b;
+	AForm	*form;
 
-	b.executeForm(form);
+	form = intern.makeForm("Shrubbery Creation Form", "oui");
+
 	b = Bureaucrat("Michel", 150);
-	b.executeForm(form);
 	try {
-		form.execute(b);
+		if (form)
+			form->execute(b);
 	} catch (std::exception &e) {
-		std::cout << e.what() << std::endl;
+		std::cerr << e.what() << std::endl;
 	}
+
+	b = Bureaucrat("Michel", 1);
+	try {
+		if (form)
+			form->execute(b);
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
+	}
+	delete form;
 }
 
 int	main() {
-	shrubberyTest();
-	robotomyTest();
 	presidentialTest();
+	robotomyTest();
+	shruberryTest();
+
+	Intern	intern;
+	AForm	*form = intern.makeForm("random", "random");
+	std::cout << "form address: " << form << std::endl;
 }

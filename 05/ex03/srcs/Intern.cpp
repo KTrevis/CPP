@@ -19,7 +19,7 @@ Intern	&Intern::operator=(const Intern &obj) {
 }
 
 void	Intern::deleteUnusedForms(AForm *forms[], int i) {
-	while (i < 3)
+	while (i < FORMS_QUANTITY)
 		delete forms[i++];
 }
 
@@ -30,7 +30,7 @@ AForm	*Intern::makeForm(std::string name, std::string target) {
 		new PresidentialPardonForm(target),
 	};
 	std::string	formNames[] = {
-		"Shruberry Creation Form",
+		"Shrubbery Creation Form",
 		"Robotomy Request Form",
 		"Presidential Pardon Form"
 	};
