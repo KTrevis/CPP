@@ -10,7 +10,8 @@ void	shrubberyTest() {
 	ShrubberyCreationForm	form("home");
 	Bureaucrat				b("Michel", 1);
 
-	/* b.executeForm(form); */
+	b.executeForm(form);
+	std::cout << b << std::endl;
 	b = Bureaucrat("Michel", 150);
 	b.executeForm(form);
 	try {

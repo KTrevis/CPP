@@ -1,14 +1,10 @@
 #include "ShrubberyCreationForm.hpp"
 #include <fstream>
 
-ShrubberyCreationForm::ShrubberyCreationForm(): AForm("Shrubbery Creation Form", 145, 137) {
-	this->_target = "undefined";
-}
+ShrubberyCreationForm::ShrubberyCreationForm(): AForm("Shrubbery Creation Form", "undefined", 145, 137) {}
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target): 
-	AForm("Shrubbery Creation Form", 145, 137) {
-		this->_target = target;
-}
+	AForm("Shrubbery Creation Form", target, 145, 137) {}
 
 ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
@@ -24,7 +20,7 @@ ShrubberyCreationForm	&ShrubberyCreationForm::operator= (const ShrubberyCreation
 }
 
 void	ShrubberyCreationForm::executeBehaviour() const {
-	std::string		fileName = this->_target + "_shruberry";
+	std::string		fileName = this->getTarget() + "_shruberry";
 	std::ofstream	file(fileName.c_str());
 
 	file << "              v .   ._, |_  .," << std::endl;

@@ -2,13 +2,11 @@
 #include "Bureaucrat.hpp"
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target):
-	AForm ("Robotomy Request Form", 72, 45) {
-	this->_target = target;
+	AForm ("Robotomy Request Form", target, 72, 45) {
 }
 
 RobotomyRequestForm::RobotomyRequestForm():
-	AForm ("Robotomy Request Form", 72, 45) {
-	this->_target = "undefined";
+	AForm ("Robotomy Request Form", "undefined", 72, 45) {
 }
 
 RobotomyRequestForm::~RobotomyRequestForm() {}
@@ -29,7 +27,7 @@ void	RobotomyRequestForm::executeBehaviour() const {
 
 	std::cout << "* DRILLING NOISES *" << std::endl;
 	if (i % 2)
-		std::cout << this->_target << " has been rotomized successfully." << std::endl;
+		std::cout << this->getTarget() << " has been rotomized successfully." << std::endl;
 	else
 		std::cout << "Robotomy failed." << std::endl;
 	i++;

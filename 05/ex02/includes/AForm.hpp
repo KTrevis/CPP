@@ -7,12 +7,13 @@
 class AForm {
 	public:
 		AForm(AForm const &obj);
-		~AForm();
+		virtual ~AForm();
 		AForm &operator=(const AForm &obj);
 		void		beSigned(Bureaucrat &b);
 		uchar		getSignGrade() const;
 		uchar		getExecGrade() const;
 		std::string	getName() const;
+		std::string	getTarget() const;
 		bool		isSigned() const;
 		void		execute(Bureaucrat const &executor) const;
 		virtual void	executeBehaviour() const = 0;
@@ -27,7 +28,8 @@ class AForm {
 
 	protected:
 		AForm();
-		AForm(std::string name, uchar requiredGrade, uchar _execGrade);
+		AForm(std::string name, uchar requiredGrade, uchar execGrade);
+		AForm(std::string name, std::string target, uchar requiredGrade, uchar execGrade);
 
 	private:
 		const std::string 	_name;

@@ -1,13 +1,9 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(): AForm("Presidential Creation Form", 145, 137) {
-	this->_target = "undefined";
-}
+PresidentialPardonForm::PresidentialPardonForm(): AForm("Presidential Creation Form", "undefined", 145, 137) {}
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target): 
-	AForm("Presidential Creation Form", 145, 137) {
-		this->_target = target;
-}
+	AForm("Presidential Creation Form", target, 145, 137) {}
 
 PresidentialPardonForm::~PresidentialPardonForm() {}
 
@@ -23,5 +19,5 @@ PresidentialPardonForm	&PresidentialPardonForm::operator=(const PresidentialPard
 }
 
 void	PresidentialPardonForm::executeBehaviour() const {
-	std::cout << this->_target << " has been pardoned by Zaphod Beeblebrox."	<< std::endl;
+	std::cout << this->getTarget() << " has been pardoned by Zaphod Beeblebrox." << std::endl;
 }

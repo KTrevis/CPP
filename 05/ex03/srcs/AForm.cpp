@@ -9,6 +9,15 @@ AForm::AForm(std::string name, uchar signGrade, uchar execGrade):
 	this->_isSigned = false;
 }
 
+AForm::AForm(std::string name, std::string target, uchar signGrade, uchar execGrade): 
+	_name(name), _target(target), _signGrade(signGrade), _execGrade(execGrade) {
+	if (signGrade < 1)
+		throw AForm::GradeTooHighException();
+	if (signGrade > 150)
+		throw AForm::GradeTooLowException();
+	this->_isSigned = false;
+}
+
 AForm::AForm(): _name("undefined"), _signGrade(1), _execGrade(1) {
 	this->_isSigned = false;
 }
@@ -47,6 +56,10 @@ uchar	AForm::getSignGrade() const {
 
 std::string	AForm::getName() const {
 	return this->_name;
+}
+
+std::string	AForm::getTarget() const {
+	return this->_target;
 }
 
 bool	AForm::isSigned() const {
