@@ -27,13 +27,12 @@ Form	&Form::operator= (const Form &obj) {
 
 void	Form::beSigned(Bureaucrat &b) {
 	if (this->_isSigned) {
-		std::cerr << "Already signed" << std::endl;
+		std::cerr << "This form is already signed." << std::endl;
 		return ;
 	}
-	if (b.getGrade() <= this->_requiredGrade)
-		this->_isSigned = true;
-	else
+	if (b.getGrade() > this->_requiredGrade)
 		throw Form::GradeTooLowException();
+	this->_isSigned = true;
 }
 
 uchar	Form::getRequiredGrade() const {
