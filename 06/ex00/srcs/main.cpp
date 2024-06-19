@@ -2,5 +2,6 @@
 
 int	main(int ac, char **av) {
 	(void)ac;
-	ScalarConverter::convert(av[1]);
+	if (av[1])
+		ScalarConverter::convert(av[1]);
 }

@@ -1,4 +1,5 @@
 #include "ScalarConverter.hpp"
+#include <cstdlib>
 
 ScalarConverter::ScalarConverter() {}
 
@@ -15,11 +16,11 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &obj) {
 	return *this;
 }
 
-e_type	getNumberType(std::string str) {
+e_type	ScalarConverter::getNumberType(std::string str) {
 	int		dots = 0;
 	size_t	i = 1;
 
-	if (str[0] == '.' || !str[0])
+	if (!isdigit(str[i]) || !str[0])
 		return UNDEFINED;
 	while (str[i]) {
 		if (i == str.length() - 1 && dots == 1 && str[i] == 'f')
@@ -37,13 +38,11 @@ e_type	getNumberType(std::string str) {
 	return UNDEFINED;
 }
 
-e_type	getType(std::string str) {
+e_type	ScalarConverter::getType(std::string str) {
 	e_type type = getNumberType(str);
 	if (type != UNDEFINED)
 		return type;
-	if (str.length() != 1)
-		return UNDEFINED;
-	if (str[0] >= ' ' && str[0] < 127)
+	if (str.length() == 1 && str[0] >= ' ' && str[0] < 127)
 		return CHAR;
 	return UNDEFINED;
 }
@@ -53,16 +52,38 @@ void	ScalarConverter::convert(std::string str) {
 	int		n = 0;
 	float	f = 0;
 	double	d = 0;
+
+	std::cout << getType(str) << std::endl;
 	switch (getType(str)) {
 		case UNDEFINED:
-			return;
+			break;
 		case CHAR:
-			return;
+			c = str[0];
+			n = static_cast<int>(c);
+			f = static_cast<float>(c);
+			d = static_cast<double>(c);
+			break;
 		case INT:
-			return;
+			n = atoi(str.c_str());
+			c = static_cast<char>(n);
+			f = static_cast<float>(n);
+			d = static_cast<double>(n);
+			break;
 		case FLOAT:
-			return;
+			f = atof(str.c_str());
+			c = static_cast<char>(f);
+			f = static_cast<float>(f);
+			d = static_cast<double>(f);
+			break;
 		case DOUBLE:
-			return;
+			d = strtod(str.c_str(), NULL);
+			c = static_cast<char>(d);
+			n = static_cast<int>(d);
+			f = static_cast<float>(d);
+			break;
 	}
+	std::cout << "char: '" << c << "'" << std::endl;
+	std::cout << "int: " << n << std::endl;
+	std::cout << "float: " <<  f << "f" << std::endl;
+	std::cout << "double: " << d << std::endl;
 }
