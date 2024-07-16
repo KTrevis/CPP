@@ -1,0 +1,21 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-g3",
+      "-c",
+      "-I",
+      "includes/",
+      "-o",
+      "objs/main.o",
+      "srcs/main.cpp"
+    ],
+    "directory": "/home/trevis/42/CPP/07/ex00",
+    "file": "/home/trevis/42/CPP/07/ex00/srcs/main.cpp",
+    "output": "/home/trevis/42/CPP/07/ex00/objs/main.o"
+  }
+]
