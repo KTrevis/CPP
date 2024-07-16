@@ -1,5 +1,10 @@
 #include "ScalarConverter.hpp"
+#include <cctype>
+#include <cfloat>
+#include <cmath>
 #include <cstdlib>
+#include <climits>
+#include <sstream>
 
 ScalarConverter::ScalarConverter() {}
 
@@ -16,11 +21,11 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &obj) {
 	return *this;
 }
 
-e_type	ScalarConverter::getNumberType(std::string str) {
+static e_type	getNumberType(const std::string &str) {
 	int		dots = 0;
 	size_t	i = 1;
 
-	if (!isdigit(str[i]) || !str[0])
+	if (!isdigit(str[0]) || !str[0])
 		return UNDEFINED;
 	while (str[i]) {
 		if (i == str.length() - 1 && dots == 1 && str[i] == 'f')
@@ -38,8 +43,10 @@ e_type	ScalarConverter::getNumberType(std::string str) {
 	return UNDEFINED;
 }
 
-e_type	ScalarConverter::getType(std::string str) {
+static e_type	getType(const std::string &str) {
 	e_type type = getNumberType(str);
+	if (type == DOUBLE && str[str.length() - 1] == '.')
+		return UNDEFINED;
 	if (type != UNDEFINED)
 		return type;
 	if (str.length() == 1 && str[0] >= ' ' && str[0] < 127)
@@ -47,16 +54,11 @@ e_type	ScalarConverter::getType(std::string str) {
 	return UNDEFINED;
 }
 
-void	ScalarConverter::convert(std::string str) {
-	char	c = 0;
-	int		n = 0;
-	float	f = 0;
-	double	d = 0;
-
-	std::cout << getType(str) << std::endl;
+static bool	setValues
+	(const std::string &str, char &c, int &n, float &f, double &d) {
 	switch (getType(str)) {
 		case UNDEFINED:
-			break;
+			return false;
 		case CHAR:
 			c = str[0];
 			n = static_cast<int>(c);
@@ -72,7 +74,7 @@ void	ScalarConverter::convert(std::string str) {
 		case FLOAT:
 			f = atof(str.c_str());
 			c = static_cast<char>(f);
-			f = static_cast<float>(f);
+			n = static_cast<int>(f);
 			d = static_cast<double>(f);
 			break;
 		case DOUBLE:
@@ -82,8 +84,62 @@ void	ScalarConverter::convert(std::string str) {
 			f = static_cast<float>(d);
 			break;
 	}
-	std::cout << "char: '" << c << "'" << std::endl;
-	std::cout << "int: " << n << std::endl;
-	std::cout << "float: " <<  f << "f" << std::endl;
-	std::cout << "double: " << d << std::endl;
+	return true;
+}
+
+static void displayChar(const char &c, const double &d) {
+	std::cout << "char: ";
+	if (d > CHAR_MAX || !isprint(c))
+		std::cout << "Non displayable" << std::endl;
+	else
+		std::cout << "'" << c << "'" << std::endl;
+}
+
+static void displayInt(const int &n, const double &d) {
+	std::cout << "int: ";
+	if (d > INT_MAX)
+		std::cout << "Overflow occured" << std::endl;
+	else
+		std::cout << n << std::endl;
+}
+
+static void displayFloat(const float &f, const double &d) {
+	std::cout << "float: ";
+	if (d > MAXFLOAT)
+		std::cout << "Overflow occured" << std::endl;
+	else {
+		std::cout << f;
+		if ((int)(f - (int)f == 0)) // if fractional part is 0
+			std::cout << ".0";
+		std::cout << "f" << std::endl;
+	}
+}
+
+static void displayDouble(const double &d) {
+	std::cout << "double: ";
+	std::cout << d;
+	if ((int)(d - (int)d == 0)) // if fractional part is 0
+		std::cout << ".0";
+	std::cout << std::endl;
+}
+
+static void	displayValues
+	(const char &c, const int &n, const float &f, const double &d) {
+	displayChar(c, d);
+	displayInt(n, d);
+	displayFloat(f, d);
+	displayDouble(d);
+}
+
+void	ScalarConverter::convert(const std::string str) {
+	char	c = 0;
+	int		n = 0;
+	float	f = 0;
+	double	d = 0;
+
+	if (!setValues(str, c, n, f, d)) {
+		std::cerr << "FORMAT ERROR" << std::endl;
+		return;
+	}
+	displayValues(c, n, f, d);
 }
