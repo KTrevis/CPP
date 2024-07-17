@@ -5,9 +5,7 @@
 
 class NotFound: public std::exception {
 	public:
-		virtual const char *what() const throw() {
-			return "Not found.";
-		}
+		virtual const char *what() const throw();
 };
 
 template<typename T>

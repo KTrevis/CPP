@@ -49,7 +49,7 @@ void	vectorTest() {
 		easyfind(arr, toFind);
 		std::cout << "FOUND " << toFind << std::endl;
 	} catch (std::exception &e) {
-		std::cout << "NOT FOUND" << std::endl;
+		std::cout << e.what();
 	}
 }
 
