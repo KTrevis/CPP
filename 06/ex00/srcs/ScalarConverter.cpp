@@ -131,12 +131,51 @@ static void	displayValues
 	displayDouble(d);
 }
 
+void	displayLiteral(const std::string &str) {
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	if (str == "nan" || str == "nanf") {
+		std::cout << "float: nanf" << std::endl;
+		std::cout << "double: nan" << std::endl;
+	}
+	else if (str == "-inf" || str == "-inff") {
+		std::cout << "float: -inff" << std::endl;
+		std::cout << "double: -inf" << std::endl;
+	}
+	else if (str == "+inf" || str == "+inff") {
+		std::cout << "float: +inff" << std::endl;
+		std::cout << "double: +inf" << std::endl;
+	}
+}
+
+bool	isLiteral(const std::string &str) {
+	std::string	literals[] = {
+		"-inf",
+		"+inf",
+		"nan",
+		"-inff",
+		"+inff",
+		"nanf",
+	};
+
+	for (int i = 0; i < 6; i++) {
+		if (literals[i] == str) {
+			displayLiteral(str);
+			return true;
+		}
+	}
+	return false;
+}
+
+
 void	ScalarConverter::convert(const std::string str) {
 	char	c = 0;
 	int		n = 0;
 	float	f = 0;
 	double	d = 0;
 
+	if (isLiteral(str))
+		return;
 	if (!setValues(str, c, n, f, d)) {
 		std::cerr << "FORMAT ERROR" << std::endl;
 		return;
