@@ -109,7 +109,7 @@ static void displayFloat(const float &f, const double &d) {
 		std::cout << "Overflow occured" << std::endl;
 	else {
 		std::cout << f;
-		if ((int)(f - (int)f == 0)) // if fractional part is 0
+		if (static_cast<int>(f - static_cast<int>(f) == 0)) // if fractional part is 0
 			std::cout << ".0";
 		std::cout << "f" << std::endl;
 	}
@@ -118,7 +118,7 @@ static void displayFloat(const float &f, const double &d) {
 static void displayDouble(const double &d) {
 	std::cout << "double: ";
 	std::cout << d;
-	if ((int)(d - (int)d == 0)) // if fractional part is 0
+	if (static_cast<int>(d - static_cast<int>(d) == 0)) // if fractional part is 0
 		std::cout << ".0";
 	std::cout << std::endl;
 }

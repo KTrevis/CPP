@@ -18,7 +18,7 @@ class ScalarConverter {
 		ScalarConverter	&operator=(const ScalarConverter &obj);
 		static void		convert(std::string const str);
 
-	protected:
+	private:
 		ScalarConverter();
 };
 
