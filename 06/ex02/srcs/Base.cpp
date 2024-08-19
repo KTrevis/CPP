@@ -16,21 +16,21 @@ Base	*Base::generate() {
 void	Base::identify(Base &ref) {
 	try {
 		A &a = dynamic_cast<A &>(ref);
-		(void)a;
+		static_cast<void>(a);
 		std::cout << "A" << std::endl;
 		return;
 	} catch (std::exception &e) {}
 
 	try {
 		B &a = dynamic_cast<B &>(ref);
-		(void)a;
+		static_cast<void>(a);
 		std::cout << "B" << std::endl;
 		return;
 	} catch (std::exception &e) {}
 
 	try {
 		C &a = dynamic_cast<C &>(ref);
-		(void)a;
+		static_cast<void>(a);
 		std::cout << "C" << std::endl;
 		return;
 	} catch (std::exception &e) {}
