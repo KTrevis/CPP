@@ -18,10 +18,6 @@ class ScalarConverter {
 		ScalarConverter	&operator=(const ScalarConverter &obj);
 		static void		convert(std::string str);
 
-	private:
-		static e_type	getType(std::string str);
-		static e_type	getNumberType(std::string str);
-
 	protected:
 		ScalarConverter();
 
