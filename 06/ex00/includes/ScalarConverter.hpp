@@ -2,25 +2,20 @@
 #define _ScalarConverter_HPP_
 
 #include <iostream>
-
-enum e_type {
-	UNDEFINED,
-	CHAR,
-	INT,
-	FLOAT,
-	DOUBLE,
-};
+#include <limits>
 
 class ScalarConverter {
 	public:
-		ScalarConverter(ScalarConverter const &obj);
-		~ScalarConverter();
-		ScalarConverter	&operator=(const ScalarConverter &obj);
-		static void		convert(std::string str);
-
+	ScalarConverter(ScalarConverter const &obj);
+	~ScalarConverter();
+	ScalarConverter	&operator=(const ScalarConverter &obj);
+	static void		convert(std::string str);
+	template<typename Target, typename Original>
+	static bool overflows(Original f) {
+		return (f < std::numeric_limits<Target>::min() || f > std::numeric_limits<Target>::max());
+	}
 	protected:
-		ScalarConverter();
-
+	ScalarConverter();
 };
 
 #endif
