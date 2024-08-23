@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 NAME = scalarconverter
 
-SRCS = main.cpp ScalarConverter.cpp Data.cpp
+SRCS = main.cpp ScalarConverter.cpp Data.cpp Displayer.cpp
 OBJS = $(addprefix objs/,$(SRCS:.cpp=.o))
 DEPS = $(OBJS:.o=.d)
 
