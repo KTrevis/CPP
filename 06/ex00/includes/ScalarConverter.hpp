@@ -23,7 +23,7 @@ class ScalarConverter {
 		Target max = std::numeric_limits<Target>::max();
 		Target min;
 
-		if (std::numeric_limits<Target>::is_iec559) // if f is a float we do that because min returns the lowest positive number 
+		if (std::numeric_limits<Target>::is_iec559) // checks if f is a float. we do that because min returns the lowest positive number 
 			min = -std::numeric_limits<Target>::max(); // for the float and the double instead of the minimum value
 		else
 			min = std::numeric_limits<Target>::min();
