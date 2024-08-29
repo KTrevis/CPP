@@ -19,7 +19,7 @@ class ScalarConverter {
 	static void		convert(const std::string &str);
 	template<typename Target, typename Original>
 	static bool overflows(Original f) {
-		return (f < std::numeric_limits<Target>::min() || f > std::numeric_limits<Target>::max());
+		return (f < -std::numeric_limits<Target>::max() || f > std::numeric_limits<Target>::max());
 	}
 	protected:
 	ScalarConverter();

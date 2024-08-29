@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 13:29:30 by ketrevis          #+#    #+#             */
-/*   Updated: 2024/08/23 13:41:23 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/08/29 20:45:03 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,15 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &obj) {
 	return *this;
 }
 
-
-
 static int	overflowChecker(const std::string &str) {
 	long l = std::strtol(str.c_str(), NULL, 10);
 	long double ld = std::atof(str.c_str());
 	int mask = 0;
-
 	if (ScalarConverter::overflows<char>(l)) mask += OVERFLOW_CHAR;
 	if (ScalarConverter::overflows<int>(l)) mask += OVERFLOW_INT;
 	if (ScalarConverter::overflows<float>(ld)) mask += OVERFLOW_FLOAT;
 	if (ScalarConverter::overflows<double>(ld)) mask += OVERFLOW_DOUBLE;
-	return mask;	
+	return mask;
 }
 
 static void	displayOriginalType(const Data &data) {
@@ -97,10 +94,34 @@ static void	displayFromDouble(double n, int mask) {
 	Displayer::display(n, mask);
 }
 
+static bool	isLiteral(std::string str) {
+	if (str == "nan" || str == "nanf") {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: nanf" << std::endl;
+		std::cout << "double: nan" << std::endl;
+		return true;
+	}
+	char sign = str[0];
+	if (sign != '-' && sign != '+')
+		return false;
+	str.erase(0, 1); // once the sign is stocked, we can remove it from the string
+	if (str == "inf" || str == "inff") {
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: " << sign << "inff" << std::endl;
+		std::cout << "double: " << sign << "inf" << std::endl;
+		return true;
+	}
+	return false;
+}
+
 void	ScalarConverter::convert(const std::string &str) {
 	Data data(str);
 	int mask = 0;
 
+	if 	(isLiteral(str))
+		return ;
 	displayOriginalType(data);
 	if (data.type != CHAR) // if the data type is char, we know an overflow cannot happen
 		mask = overflowChecker(str);
