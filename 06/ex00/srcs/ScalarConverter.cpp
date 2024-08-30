@@ -6,7 +6,7 @@
 /*   By: ketrevis <ketrevis@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 13:29:30 by ketrevis          #+#    #+#             */
-/*   Updated: 2024/08/30 15:36:17 by ketrevis         ###   ########.fr       */
+/*   Updated: 2024/08/30 16:33:05 by ketrevis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ ScalarConverter	&ScalarConverter::operator=(const ScalarConverter &obj) {
 	return *this;
 }
 
-static int	overflowChecker(Data data, const std::string &str) {
+static bool	willOverflow(const Data &data, const std::string &str) {
 	long l = std::strtol(str.c_str(), NULL, 10);
 	long double ld = std::strtold(str.c_str(), NULL);
 	if (data.type == CHAR && ScalarConverter::castWillOverflow<char>(l)) return true;
@@ -73,23 +73,35 @@ static void	displayTypes(char n) {
 }
 
 static void	displayTypes(int n) {
-	Displayer::display(static_cast<char>(n));
+	if (ScalarConverter::castWillOverflow<char>(n))
+		std::cout << "char: overflow" << std::endl;
+	else Displayer::display(static_cast<char>(n));
 	Displayer::display(n);
 	Displayer::display(static_cast<float>(n));
 	Displayer::display(static_cast<double>(n));
 }
 
 static void	displayTypes(float n) {
-	Displayer::display(static_cast<char>(n));
-	Displayer::display(static_cast<int>(n));
+	if (ScalarConverter::castWillOverflow<char>(n))
+		std::cout << "char: overflow" << std::endl;
+	else Displayer::display(static_cast<char>(n));
+	if (ScalarConverter::castWillOverflow<int>(n))
+		std::cout << "int: overflow" << std::endl;
+	else Displayer::display(static_cast<int>(n));
 	Displayer::display(n);
 	Displayer::display(static_cast<double>(n));
 }
 
 static void	displayTypes(double n) {
-	Displayer::display(static_cast<char>(n));
-	Displayer::display(static_cast<int>(n));
-	Displayer::display(static_cast<float>(n));
+	if (ScalarConverter::castWillOverflow<char>(n))
+		std::cout << "char: overflow" << std::endl;
+	else Displayer::display(static_cast<char>(n));
+	if (ScalarConverter::castWillOverflow<int>(n))
+		std::cout << "int: overflow" << std::endl;
+	else Displayer::display(static_cast<int>(n));
+	if (ScalarConverter::castWillOverflow<float>(n))
+		std::cout << "int: overflow" << std::endl;
+	else Displayer::display(static_cast<float>(n));
 	Displayer::display(n);
 }
 
@@ -120,11 +132,11 @@ void	ScalarConverter::convert(const std::string &str) {
 
 	if 	(isLiteral(str))
 		return ;
-	if (overflowChecker(data, str)) {
-		std::cout << "invalid input" << std::endl;
+	displayOriginalType(data);
+	if (willOverflow(data, str)) {
+		std::cout << "overflow will happen using this number and type combination" << std::endl;
 		return ;
 	}
-	displayOriginalType(data);
 	switch (data.type) {
 		case CHAR: displayTypes(str[0]); break;
 		case INT: displayTypes(std::atoi(str.c_str())); break;
