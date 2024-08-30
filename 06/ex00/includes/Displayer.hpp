@@ -5,10 +5,10 @@
 
 class Displayer {
 	public:
-		static void	display(char c, int mask);
-		static void	display(int n, int mask);
-		static void	display(float f, int mask);
-		static void	display(double d, int mask);
+		static void	display(char c);
+		static void	display(int n);
+		static void	display(float f);
+		static void	display(double d);
 	private:
 		Displayer();
 		Displayer(Displayer const &obj);

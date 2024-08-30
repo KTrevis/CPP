@@ -5,6 +5,9 @@
 
 int	main(int ac, char **av) {
 	(void)ac;
-	if (av[1])
+	if (ac != 2) {
+		std::cerr << "argument number invalid" << std::endl;
+		return 1;
+	}
 		ScalarConverter::convert(av[1]);
 }
