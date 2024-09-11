@@ -3,7 +3,7 @@ FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
 NAME = easyfind
 
-SRCS = main.cpp NotFound.cpp
+SRCS = main.cpp Span.cpp
 OBJS = $(addprefix objs/,$(SRCS:.cpp=.o))
 DEPS = $(OBJS:.o=.d)
 

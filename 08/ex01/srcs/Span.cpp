@@ -1,22 +1,24 @@
 #include "Span.hpp"
 
-Span::Span() {
-	std::cout << "Span : Default Constructor Called" << std::endl;
-}
+Span::Span(int size) {}
 
-Span::~Span() {
-	std::cout << "Span : Destructor Called" << std::endl;
-}
+Span::Span() {}
+
+Span::~Span() {}
 
 Span::Span(Span const &obj) {
-	std::cout << "Span : Copy Constructor Called" << std::endl;
 	if (this != &obj)
 		*this = obj;
 }
 
 Span	&Span::operator=(const Span &obj) {
-	std::cout << "Span : Copy Assignment Operator Called" << std::endl;
 	if (this == &obj)
 		return *this;
 	return *this;
+}
+
+void	Span::addNumber(int n) {
+	this->_arr.push_back(n);
+	for (std::vector<int>::iterator it = this->_arr.begin(); it != this->_arr.end(); it++)
+		std::cout << *it << std::endl;
 }

@@ -1,0 +1,40 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-g3",
+      "-c",
+      "-I",
+      "includes/",
+      "-o",
+      "objs/main.o",
+      "srcs/main.cpp"
+    ],
+    "directory": "/home/ketrevis/42/cpp/github/08/ex01",
+    "file": "/home/ketrevis/42/cpp/github/08/ex01/srcs/main.cpp",
+    "output": "/home/ketrevis/42/cpp/github/08/ex01/objs/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-g3",
+      "-c",
+      "-I",
+      "includes/",
+      "-o",
+      "objs/Span.o",
+      "srcs/Span.cpp"
+    ],
+    "directory": "/home/ketrevis/42/cpp/github/08/ex01",
+    "file": "/home/ketrevis/42/cpp/github/08/ex01/srcs/Span.cpp",
+    "output": "/home/ketrevis/42/cpp/github/08/ex01/objs/Span.o"
+  }
+]
