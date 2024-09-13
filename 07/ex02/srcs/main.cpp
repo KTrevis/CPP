@@ -19,6 +19,8 @@ int	main() {
 		cpy[99] = "coucou";
 		std::cout << cpy[99] << std::endl;
 		std::cout << arr[99] << std::endl;
+		arr = cpy;
+		std::cout << arr[99] << std::endl;
 		std::cout << cpy[100] << std::endl;
 	} catch (std::exception &e) {
 		std::cerr << e.what() << std::endl;
