@@ -1,7 +1,7 @@
 CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98 -g3
 
-NAME = easyfind
+NAME = span
 
 SRCS = main.cpp Span.cpp
 OBJS = $(addprefix objs/,$(SRCS:.cpp=.o))
