@@ -3,12 +3,14 @@
 
 int main() {
 	try {
-		Span sp(5);
-		sp.addNumber(6);
-		sp.addNumber(3);
-		sp.addNumber(17);
-		sp.addNumber(9);
-		sp.addNumber(11);
+		std::vector<int> arr;
+		arr.push_back(6);
+		arr.push_back(3);
+		arr.push_back(17);
+		arr.push_back(9);
+		arr.push_back(11);
+		Span sp(arr.size());
+		sp.addNumbers(arr.begin(), arr.end());
 
 		std::cout << "Shortest Span: " << sp.shortestSpan() << std::endl;
 		std::cout << "Longest Span: " << sp.longestSpan() << std::endl;

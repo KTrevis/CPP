@@ -14,6 +14,10 @@ class Span {
 		void	addNumber(int n);
 		int		shortestSpan();
 		int		longestSpan();
+		template <typename Iterator>
+		void addNumbers(Iterator begin, Iterator end) {
+			this->_arr.insert(this->_arr.end(), begin, end);
+		}	
 
 		class SpanFullException: public std::exception {
 			virtual const char *what() const throw();
