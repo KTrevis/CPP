@@ -17,17 +17,19 @@ Span::Span(Span const &obj) {
 Span	&Span::operator=(const Span &obj) {
 	if (this == &obj)
 		return *this;
+	_arr = obj._arr;
+	_maxSize = obj._maxSize;
 	return *this;
 }
 
 int	Span::shortestSpan() {
 	if (this->_arr.size() <= 1)
 		throw NoSpanException();
-	const std::vector<int> &arr = this->_arr;
+	std::vector<int> &arr = this->_arr;
 	std::sort(arr.begin(), arr.end());
 	int min = arr[1] - arr[0];
 
-	for (unsigned int i = 1; i < arr.size(); i++) {
+	for (unsigned int i = 2; i < arr.size(); i++) {
 		if (arr[i] - arr[i - 1] < min)
 			min = arr[i] - arr[i - 1];
 	}
@@ -38,7 +40,7 @@ int	Span::shortestSpan() {
 int	Span::longestSpan() {
 	if (this->_arr.size() <= 1)
 		throw NoSpanException();
-	const std::vector<int> &arr = this->_arr;
+	std::vector<int> &arr = this->_arr;
 	std::sort(arr.begin(), arr.end());
 
 	return arr[arr.size() - 1] - arr[0];
@@ -46,7 +48,7 @@ int	Span::longestSpan() {
 
 void	Span::addNumber(int n) {
 	if (this->_arr.size() == this->_maxSize)
-		return;
+		throw SpanFullException();
 	this->_arr.push_back(n);
 }
 

@@ -14,9 +14,9 @@
       "objs/main.o",
       "srcs/main.cpp"
     ],
-    "directory": "/root/42/CPP/08/ex01",
-    "file": "/root/42/CPP/08/ex01/srcs/main.cpp",
-    "output": "/root/42/CPP/08/ex01/objs/main.o"
+    "directory": "/root/42/CPP/02/ex02",
+    "file": "/root/42/CPP/02/ex02/srcs/main.cpp",
+    "output": "/root/42/CPP/02/ex02/objs/main.o"
   },
   {
     "arguments": [
@@ -30,11 +30,11 @@
       "-I",
       "includes/",
       "-o",
-      "objs/Span.o",
-      "srcs/Span.cpp"
+      "objs/Fixed.o",
+      "srcs/Fixed.cpp"
     ],
-    "directory": "/root/42/CPP/08/ex01",
-    "file": "/root/42/CPP/08/ex01/srcs/Span.cpp",
-    "output": "/root/42/CPP/08/ex01/objs/Span.o"
+    "directory": "/root/42/CPP/02/ex02",
+    "file": "/root/42/CPP/02/ex02/srcs/Fixed.cpp",
+    "output": "/root/42/CPP/02/ex02/objs/Fixed.o"
   }
 ]
