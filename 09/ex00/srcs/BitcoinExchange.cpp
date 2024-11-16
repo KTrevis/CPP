@@ -7,10 +7,6 @@
 #include <string>
 #include <vector>
 
-/* static void print(std::pair<std::string, float> it) { */
-/* 	std::cout << it.first << " " << it.second << std::endl; */
-/* } */
-
 static std::vector<std::string> split(std::string str, const std::string &lim) {
 	std::vector<std::string> arr;
 	std::string word;
