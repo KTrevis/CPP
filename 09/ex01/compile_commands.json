@@ -1,0 +1,40 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-g3",
+      "-c",
+      "-I",
+      "includes/",
+      "-o",
+      "objs/main.o",
+      "srcs/main.cpp"
+    ],
+    "directory": "/root/42/CPP/09/ex01",
+    "file": "/root/42/CPP/09/ex01/srcs/main.cpp",
+    "output": "/root/42/CPP/09/ex01/objs/main.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/c++",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-std=c++98",
+      "-g3",
+      "-c",
+      "-I",
+      "includes/",
+      "-o",
+      "objs/RPN.o",
+      "srcs/RPN.cpp"
+    ],
+    "directory": "/root/42/CPP/09/ex01",
+    "file": "/root/42/CPP/09/ex01/srcs/RPN.cpp",
+    "output": "/root/42/CPP/09/ex01/objs/RPN.o"
+  }
+]
