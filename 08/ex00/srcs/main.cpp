@@ -3,57 +3,37 @@
 #include <iostream>
 #include "easyfind.hpp"
 
-void	listTest() {
-	std::cout << "LIST TEST" << std::endl;
-	std::list<int>	arr;
+template <typename T>
+void	test() {
+	T arr;
+	typename T::iterator it;
 	arr.push_back(12);
 	arr.push_back(16);
 	arr.push_back(8);
-	try {
-		int toFind;
-		toFind = 12;
-		easyfind(arr, toFind);
-		std::cout << "FOUND " << toFind << std::endl;
-		toFind = 16;
-		easyfind(arr, toFind);
-		std::cout << "FOUND " << toFind << std::endl;
-		toFind = 8;
-		easyfind(arr, toFind);
-		std::cout << "FOUND " << toFind << std::endl;
-		toFind = 20;
-		easyfind(arr, toFind);
-		std::cout << "FOUND " << toFind << std::endl;
+
+	try {	
+		it = easyfind(arr, 12);
+		std::cout << "FOUND " << *it << std::endl;
+
+		it = easyfind(arr, 16);
+		std::cout << "FOUND " << *it << std::endl;
+
+		it = easyfind(arr, 8);
+		std::cout << "FOUND " << *it << std::endl;
+
+		it = easyfind(arr, 123);
+		std::cout << "FOUND " << *it << std::endl;
 	} catch (std::exception &e) {
 		std::cout << e.what() << std::endl;
 	}
 }
 
-void	vectorTest() {
-	std::cout << "VECTOR TEST" << std::endl;
-	std::vector<int>	arr;
-	arr.push_back(12);
-	arr.push_back(16);
-	arr.push_back(8);
-	try {
-		int toFind;
-		toFind = 12;
-		easyfind(arr, toFind);
-		std::cout << "FOUND " << toFind << std::endl;
-		toFind = 16;
-		easyfind(arr, toFind);
-		std::cout << "FOUND " << toFind << std::endl;
-		toFind = 8;
-		easyfind(arr, toFind);
-		std::cout << "FOUND " << toFind << std::endl;
-		toFind = 20;
-		easyfind(arr, toFind);
-		std::cout << "FOUND " << toFind << std::endl;
-	} catch (std::exception &e) {
-		std::cout << e.what();
-	}
-}
-
 int	main() {
-	vectorTest();
-	listTest();
+	std::cout << "VECTOR" << std::endl;
+	test<std::vector<int> >();
+	std::cout << std::endl;
+
+	std::cout << "LIST" << std::endl;
+	test<std::list<int> >();
+	std::cout << std::endl;
 }
