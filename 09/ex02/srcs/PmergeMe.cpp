@@ -1,4 +1,5 @@
 #include "PmergeMe.hpp"
+#include <algorithm>
 #include <cctype>
 #include <cstdlib>
 #include <ctime>
@@ -68,13 +69,13 @@ void	PmergeMe::mergeInsertionSort(const std::string &str) {
 	fillContainer(str, _dq);
 	std::cout << "BEFORE" << std::endl;
 	displayContainer(_dq);
+	std::deque<int> dq = _dq;
 
 	clock_t	time = clock();
 	sort(_dq);
 	time = clock() - time;
 	std::cout << "AFTER" << std::endl;
 	displayContainer(_dq);
-
 	std::cout << double(time) / CLOCKS_PER_SEC * 1000;
 	std::cout << " miliseconds taken to sort deque" << std::endl;
 
@@ -142,13 +143,17 @@ void	PmergeMe::sort(std::list<int> &list) {
 			it++;
 	}
 
-	if (list.size() % 2 != 0) // this means there is a remaining element after the loop
+	if (list.size() % 2 != 0)
     	left.push_back(list.back());
 
-	sort(left);
 	sort(right);
 
-	list = merge(left, right);
+	for (it = left.begin(); it != left.end(); it++) {
+		std::list<int>::iterator pos = std::lower_bound(right.begin(), right.end(), *it);
+		right.insert(pos, *it);
+	}
+
+	list = right;
 }
 
 void	PmergeMe::sort(std::deque<int> &dq) {
@@ -166,11 +171,15 @@ void	PmergeMe::sort(std::deque<int> &dq) {
 		}
 	}
 
-	if (dq.size() % 2 != 0) // this means there is a remaining element after the loop
+	if (dq.size() % 2 != 0)
     	left.push_back(dq.back());
 
-	sort(left);
 	sort(right);
 
-	dq = merge(left, right);
+	for (size_t i = 0; i < left.size(); i++) {
+		std::deque<int>::iterator pos = std::lower_bound(right.begin(), right.end(), left[i]);
+		right.insert(pos, left[i]);
+	}
+
+	dq = right;
 }
