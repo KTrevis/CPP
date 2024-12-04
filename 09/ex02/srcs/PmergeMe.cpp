@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 
+
 PmergeMe::PmergeMe() {}
 
 PmergeMe::~PmergeMe() {}
@@ -65,6 +66,17 @@ static bool	fillContainer(const std::string &str, T &container) {
 	return true;
 }
 
+/* void bubbleSort(std::deque<int>& v) { */
+/* 	int n = v.size(); */
+/*  */
+/* 	for (int i = 0; i < n - 1; i++) { */
+/* 		for (int j = 0; j < n - i - 1; j++) { */
+/* 			if (v[j] > v[j + 1]) */
+/* 				std::swap(v[j], v[j + 1]); */
+/* 		} */
+/* 	} */
+/* } */
+
 void	PmergeMe::mergeInsertionSort(const std::string &str) {
 	fillContainer(str, _dq);
 	std::cout << "BEFORE" << std::endl;
@@ -78,6 +90,12 @@ void	PmergeMe::mergeInsertionSort(const std::string &str) {
 	displayContainer(_dq);
 	std::cout << double(time) / CLOCKS_PER_SEC * 1000;
 	std::cout << " miliseconds taken to sort deque" << std::endl;
+
+	/* time = clock(); */
+	/* bubbleSort(_dq); */
+	/* time = clock() - time; */
+	/* std::cout << double(time) / CLOCKS_PER_SEC * 1000; */
+	/* std::cout << " miliseconds taken to bubble sort deque" << std::endl; */
 
 	fillContainer(str, _list);
 
