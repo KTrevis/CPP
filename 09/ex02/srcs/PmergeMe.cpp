@@ -46,10 +46,6 @@ static bool	fillContainer(const std::string &str, T &container) {
 		skipws(str, i);
 		if (i == str.size())
 			break;
-		if (!isdigit(str[i])) {
-			std::cerr << "error: invalid character found" << std::endl;
-			return false;
-		}
 		size_t spacePos = str.find(" ", i);
 		std::string substr = str.substr(i, spacePos);
 		int n = std::atoi(substr.c_str());
