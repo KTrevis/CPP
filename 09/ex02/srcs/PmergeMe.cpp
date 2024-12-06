@@ -49,10 +49,6 @@ static bool	fillContainer(const std::string &str, T &container) {
 		size_t spacePos = str.find(" ", i);
 		std::string substr = str.substr(i, spacePos);
 		int n = std::atoi(substr.c_str());
-		if (n <= 0) {
-			std::cerr << "error: non positive number found" << std::endl;
-			return false;
-		}
 		container.push_back(n);
 		if (spacePos == std::string::npos)
 			break;
@@ -73,7 +69,27 @@ static bool	fillContainer(const std::string &str, T &container) {
 /* 	} */
 /* } */
 
+static std::deque<size_t> setJacobsthal() {
+	std::deque<size_t> jacobsthal;
+	jacobsthal.push_back(0);
+	jacobsthal.push_back(1);
+	while (1) {
+		size_t size = jacobsthal.size();
+		size_t n = 2 * jacobsthal[size - 1] + jacobsthal[size - 2];
+		if (n < jacobsthal[size - 1])
+			break;
+		jacobsthal.push_back(n);
+	}
+	return jacobsthal;
+}
+
+static const std::deque<size_t> &getJacobsthal() {
+	static std::deque<size_t> jacobsthal = setJacobsthal();
+	return jacobsthal;
+}
+
 void	PmergeMe::mergeInsertionSort(const std::string &str) {
+	getJacobsthal();
 	fillContainer(str, _dq);
 	std::cout << "BEFORE" << std::endl;
 	displayContainer(_dq);
@@ -189,10 +205,20 @@ void	PmergeMe::sort(std::deque<int> &dq) {
     	left.push_back(dq.back());
 
 	sort(right);
+	const std::deque<size_t> &jacobsthal = getJacobsthal();
+	size_t i = 0;
 
-	for (size_t i = 0; i < left.size(); i++) {
-		std::deque<int>::iterator pos = std::lower_bound(right.begin(), right.end(), left[i]);
-		right.insert(pos, left[i]);
+	while (left.size() != 0) {
+		size_t toInsert;
+		if (i + 2 >= jacobsthal.size())
+			toInsert = jacobsthal[jacobsthal.size() - 1];
+		else toInsert = jacobsthal[i + 2];
+		i++;
+		if (toInsert >= left.size())
+			toInsert = left.size() - 1;
+		std::deque<int>::iterator pos = std::lower_bound(right.begin(), right.end(), left[toInsert]);
+		right.insert(pos, left[toInsert]);
+		left.erase(left.begin() + toInsert);
 	}
 
 	dq = right;
